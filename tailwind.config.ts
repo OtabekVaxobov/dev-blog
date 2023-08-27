@@ -19,10 +19,20 @@ const config: Config = {
         'purple-dark': {
           colors: {
             background: '#180828', // or DEFAULT
-            foreground: '#E4D4F4', // or 50 to 900 DEFAULT
+            foreground: '#c084fc', // or 50 to 900 DEFAULT
             primary: {
               DEFAULT: '#180828',
-              foreground: '#E4D4F4',
+              foreground: '#006FEE',
+            },
+          },
+        },
+        cyberpunk: {
+          colors: {
+            background: '#efc11a', // or DEFAULT
+            foreground: '#18171c', // or 50 to 900 DEFAULT
+            primary: {
+              DEFAULT: '#efc11a',
+              foreground: '#18171c',
             },
           },
         },

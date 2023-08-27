@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { Image, Skeleton } from '@nextui-org/react';
 import { Suspense } from 'react';
 import NextImage from 'next/image';
-import OtabeksJPG from '../../../public/otaw.jpg';
+import OtabeksJPG from './otaw.jpg';
 import {
   Popover,
   PopoverTrigger,
@@ -11,7 +11,7 @@ import {
   Button,
 } from '@nextui-org/react';
 import Link from 'next/link';
-import Loading from './loading';
+import Loading from '../../components/loading';
 
 export default function About() {
   const [typeOfCreator, setTypeOfCreator] = useState('Designer');

@@ -1,5 +1,3 @@
-const { nextui } = require('@nextui-org/react');
-
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   experimental: {
