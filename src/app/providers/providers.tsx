@@ -15,7 +15,7 @@ export function Providers({
       <NextThemesProvider
         attribute="class"
         defaultTheme="system"
-        themes={['light', 'dark', 'purple-dark', 'cyberpunk']}
+        themes={['light', 'dark', 'purpledark', 'cyberpunk']}
       >
         <Header />
 

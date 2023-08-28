@@ -1,6 +1,5 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  devtool: "source-map",
   experimental: {
     appDir: true,
   },

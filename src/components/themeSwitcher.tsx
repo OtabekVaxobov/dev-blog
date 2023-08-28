@@ -17,7 +17,7 @@ export function ThemeSwitcher() {
     <>
       <div>
         <select value={theme} onChange={(e) => setTheme(e.target.value)}>
-          <option value="purple-dark">purple-dark</option>
+          <option value="purpledark">PurpleDark</option>
           <option value="cyberpunk">Cyberpunk</option>
           <option value="dark">Dark</option>
           <option value="light">Light</option>

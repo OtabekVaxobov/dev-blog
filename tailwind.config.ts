@@ -12,11 +12,12 @@ const config: Config = {
     extend: {},
   },
   darkMode: 'class',
+  purpledark: 'class',
   plugins: [
     nextui({
       addCommonColors: true,
       themes: {
-        'purple-dark': {
+        purpledark: {
           colors: {
             background: '#180828', // or DEFAULT
             foreground: '#c084fc', // or 50 to 900 DEFAULT
@@ -49,7 +50,7 @@ const config: Config = {
         },
         dark: {
           colors: {
-            background: '#000000', // or DEFAULT
+            background: '#111827', // or DEFAULT
             foreground: '#ECEDEE', // or 50 to 900 DEFAULT
             primary: {
               //... 50 to 900
