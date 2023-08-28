@@ -1,10 +1,8 @@
 {
   "extends": [
-    "next/core-web-vitals",
-    "eslint-config-next/core-web-vitals",
-    "eslint:recommended"
+    "next",
+    "next/core-web-vitals"
   ],
-
   "env": {
     "browser": true
   }
