@@ -1,15 +1,8 @@
 'use client';
 import React, { useEffect, useState } from 'react';
-import { Image, Skeleton } from '@nextui-org/react';
 import { Suspense } from 'react';
 import NextImage from 'next/image';
 import OtabeksJPG from './otaw.jpg';
-import {
-  Popover,
-  PopoverTrigger,
-  PopoverContent,
-  Button,
-} from '@nextui-org/react';
 import Link from 'next/link';
 import Loading from '../../components/loading';
 

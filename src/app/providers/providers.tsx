@@ -20,6 +20,7 @@ export function Providers({
         <Header />
 
         <main className="text-foreground bg-background">{children}</main>
+
       </NextThemesProvider>
     </NextUIProvider>
   );
