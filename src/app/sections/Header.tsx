@@ -1,6 +1,16 @@
 'use client';
 import { ThemeSwitcher } from '@/components/themeSwitcher';
-import { Button, Divider, Navbar, NavbarBrand, NavbarContent, NavbarItem, NavbarMenu, NavbarMenuItem, NavbarMenuToggle } from '@nextui-org/react';
+import {
+  Button,
+  Divider,
+  Navbar,
+  NavbarBrand,
+  NavbarContent,
+  NavbarItem,
+  NavbarMenu,
+  NavbarMenuItem,
+  NavbarMenuToggle,
+} from '@nextui-org/react';
 import Link from 'next/link';
 import { useState } from 'react';
 
@@ -8,29 +18,34 @@ export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const menuItems = [
-    "Profile",
-    "Dashboard",
-    "Activity",
-    "Analytics",
-    "System",
-    "Deployments",
-    "My Settings",
-    "Team Settings",
-    "Help & Feedback",
-    "Log Out",
+    'Profile',
+    'Dashboard',
+    'Activity',
+    'Analytics',
+    'System',
+    'Deployments',
+    'My Settings',
+    'Team Settings',
+    'Help & Feedback',
+    'Log Out',
   ];
   return (
     <>
       <Divider />
-      <Navbar onMenuOpenChange={setIsMenuOpen} className='bg-transparent dark:bg-slate-500 purpledark:bg-purple-400'>
+      <Navbar
+        onMenuOpenChange={setIsMenuOpen}
+        className="bg-transparent dark:bg-slate-500 purpledark:bg-purple-400"
+      >
         <NavbarContent>
           <NavbarMenuToggle
-            aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+            aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
             className="sm:hidden"
           />
           <NavbarBrand>
             logo
-            <Link className="font-bold text-inherit" href='/'>Dev-Blog</Link>
+            <Link className="font-bold text-inherit" href="/">
+              Dev-Blog
+            </Link>
           </NavbarBrand>
         </NavbarContent>
 
@@ -40,7 +55,7 @@ export default function Header() {
               Home
             </Link>
           </NavbarItem>
-          <NavbarItem >
+          <NavbarItem>
             <Link href="/blogs" aria-current="page">
               Blogs
             </Link>
@@ -50,35 +65,24 @@ export default function Header() {
               About
             </Link>
           </NavbarItem>
-
         </NavbarContent>
         <NavbarContent justify="end">
           <NavbarItem className="hidden sm:flex">
-
             <Link href="#">Login</Link>
           </NavbarItem>
           <NavbarItem className="hidden sm:flex">
-
-            <Link href="/signup" >
-              Sign Up
-            </Link>
-
-
+            <Link href="/signup">Sign Up</Link>
           </NavbarItem>
 
-          <NavbarItem>
+          <NavbarItem className=" cursor-pointer">
             <ThemeSwitcher />
           </NavbarItem>
-
         </NavbarContent>
 
-        <NavbarMenu >
+        <NavbarMenu>
           {menuItems.map((item, index) => (
             <NavbarMenuItem key={`${item}-${index}`}>
-              <Link
-                className="w-full"
-                href="/"
-              >
+              <Link className="w-full" href="/">
                 {item}
               </Link>
             </NavbarMenuItem>

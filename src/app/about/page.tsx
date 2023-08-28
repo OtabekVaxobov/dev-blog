@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import { Suspense } from 'react';
 import NextImage from 'next/image';
-import OtabeksJPG from './otaw.jpg';
+import OtabeksJPG from '../../../public/otaw.jpg';
 import Link from 'next/link';
 import Loading from '../../components/loading';
 
@@ -17,7 +17,6 @@ export default function About() {
     {
       id: 1,
       name: 'Otabek Vaxobov',
-      typeOfDev: 'cf',
       git_url: 'https://github.com/OtabekVaxobov',
       telegram: 'https://t.me/OtabekVaxobov',
       linkedin: 'https://www.linkedin.com/in/otabek-vaxobov-8636b7146/',
@@ -57,8 +56,12 @@ export default function About() {
 
             <div className="mt-6 xl:mt-16">
               {arr.map((item) => (
-                <div key={item.id} className="flex flex-col items-center sm:p-10">
-                  <NextImage className='rounded-lg'
+                <div
+                  key={item.id}
+                  className="flex flex-col items-center sm:p-10"
+                >
+                  <NextImage
+                    className="rounded-lg"
                     width={300}
                     height={300}
                     src={OtabeksJPG}
