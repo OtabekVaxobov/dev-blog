@@ -57,10 +57,10 @@ export default function About() {
 
             <div className="mt-6 xl:mt-16">
               {arr.map((item) => (
-                <div key={item.id} className="flex flex-col items-center">
-                  <NextImage
-                    width={400}
-                    height={400}
+                <div key={item.id} className="flex flex-col items-center sm:p-10">
+                  <NextImage className='rounded-lg'
+                    width={300}
+                    height={300}
                     src={OtabeksJPG}
                     alt=""
                     priority={false}
