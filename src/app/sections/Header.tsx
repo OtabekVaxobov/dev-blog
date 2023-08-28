@@ -30,7 +30,7 @@ export default function Header() {
           />
           <NavbarBrand>
             logo
-            <p className="font-bold text-inherit">Dev-Blog</p>
+            <Link className="font-bold text-inherit" href='/'>Dev-Blog</Link>
           </NavbarBrand>
         </NavbarContent>
 
