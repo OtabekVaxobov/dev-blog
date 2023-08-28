@@ -2,6 +2,7 @@
 
 import { useTheme } from 'next-themes';
 import { useState, useEffect } from 'react';
+import { Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Button, Select, SelectItem } from "@nextui-org/react";
 
 export function ThemeSwitcher() {
   const [mounted, setMounted] = useState(false);
@@ -15,14 +16,24 @@ export function ThemeSwitcher() {
 
   return (
     <>
-      <div>
-        <select value={theme} onChange={(e) => setTheme(e.target.value)}>
-          <option value="purpledark">PurpleDark</option>
-          <option value="cyberpunk">Cyberpunk</option>
-          <option value="dark">Dark</option>
-          <option value="light">Light</option>
-        </select>
-      </div>
+      <Dropdown suppressHydrationWarning >
+        <DropdownTrigger>
+
+
+          Themes
+
+        </DropdownTrigger>
+        <DropdownMenu
+          aria-label="Action event example"
+          onAction={(key) => setTheme(key.toString())}
+        >
+          <DropdownItem key="purpledark">PurpleDark</DropdownItem>
+          <DropdownItem key="cyberpunk">Cyberpunk</DropdownItem>
+          <DropdownItem key="dark">Dark</DropdownItem>
+          <DropdownItem key="light">Light</DropdownItem>
+        </DropdownMenu>
+      </Dropdown>
+
     </>
   );
 }

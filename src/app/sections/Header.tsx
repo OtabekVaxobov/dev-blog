@@ -50,30 +50,34 @@ export default function Header() {
               About
             </Link>
           </NavbarItem>
+
         </NavbarContent>
         <NavbarContent justify="end">
-          <NavbarItem className="hidden lg:flex">
-            <ThemeSwitcher />
+          <NavbarItem className="hidden sm:flex">
+
             <Link href="#">Login</Link>
           </NavbarItem>
-          <NavbarItem className="hidden lg:flex">
+          <NavbarItem className="hidden sm:flex">
+
+            <Link href="/signup" >
+              Sign Up
+            </Link>
+
 
           </NavbarItem>
+
           <NavbarItem>
-            <Button as={Link} color="default" href="/signup" variant="flat">
-              Sign Up
-            </Button>
+            <ThemeSwitcher />
           </NavbarItem>
+
         </NavbarContent>
-        <NavbarMenu>
+
+        <NavbarMenu >
           {menuItems.map((item, index) => (
             <NavbarMenuItem key={`${item}-${index}`}>
               <Link
-                color={
-                  index === 2 ? "primary" : index === menuItems.length - 1 ? "danger" : "foreground"
-                }
                 className="w-full"
-                href="#"
+                href="/"
               >
                 {item}
               </Link>
