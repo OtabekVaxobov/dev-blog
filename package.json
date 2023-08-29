@@ -10,11 +10,8 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@nextui-org/react": "^2.1.5",
     "autoprefixer": "^10.4.15",
     "firebase": "^10.3.0",
-    "firebase-admin": "^11.10.1",
-    "framer-motion": "^10.16.1",
     "next": "latest",
     "postcss": "^8.4.28",
     "react": "latest",
@@ -24,6 +21,7 @@
   "devDependencies": {
     "@types/node": "20.5.6",
     "@types/react": "^18.2.21",
+    "daisyui": "latest",
     "eslint": "8.48.0",
     "eslint-config-next": "13.4.19",
     "next-themes": "^0.2.1",
