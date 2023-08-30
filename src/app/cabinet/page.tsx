@@ -9,15 +9,18 @@ export default function Cabinet() {
   const user = useAuth();
   const user1 = getAuth();
 
+
   console.log(user1.currentUser);
   const currentUser = user.currentUser;
   let router = useRouter();
   const logout = () => {
     user
       .logout()
-      .then(router.push('/login'))
       .catch((error: string) => {
         console.log(error);
+      })
+      .finally(() => {
+        router.push('/login');
       });
   };
 

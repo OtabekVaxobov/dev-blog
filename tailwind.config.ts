@@ -1,4 +1,5 @@
 import type { Config } from 'tailwindcss';
+import { nextui } from '@nextui-org/react';
 
 const config: Config = {
   content: [
@@ -11,39 +12,54 @@ const config: Config = {
     extend: {},
   },
   darkMode: 'class',
-  plugins: [require('daisyui')],
-  daisyui: {
-    themes: [
-      'light',
-      'dark',
-      'cupcake',
-      'bumblebee',
-      'emerald',
-      'corporate',
-      'synthwave',
-      'retro',
-      'cyberpunk',
-      'valentine',
-      'halloween',
-      'garden',
-      'forest',
-      'aqua',
-      'lofi',
-      'pastel',
-      'fantasy',
-      'wireframe',
-      'black',
-      'luxury',
-      'dracula',
-      'cmyk',
-      'autumn',
-      'business',
-      'acid',
-      'lemonade',
-      'night',
-      'coffee',
-      'winter',
-    ],
-  },
+  plugins: [
+    nextui({
+      addCommonColors: true,
+      themes: {
+        purpledark: {
+          colors: {
+            background: '#180828', // or DEFAULT
+            foreground: '#c084fc', // or 50 to 900 DEFAULT
+            primary: {
+              DEFAULT: '#180828',
+              foreground: '#006FEE',
+            },
+          },
+        },
+        cyberpunk: {
+          colors: {
+            background: '#efc11a', // or DEFAULT
+            foreground: '#18171c', // or 50 to 900 DEFAULT
+            primary: {
+              DEFAULT: '#efc11a',
+              foreground: '#18171c',
+            },
+          },
+        },
+        light: {
+          colors: {
+            background: '#FFFFFF', // or DEFAULT
+            foreground: '#11181C', // or 50 to 900 DEFAULT
+            primary: {
+              //... 50 to 900
+              foreground: '#FFFFFF',
+              DEFAULT: '#006FEE',
+            },
+          },
+        },
+        dark: {
+          colors: {
+            background: '#111827', // or DEFAULT
+            foreground: '#ECEDEE', // or 50 to 900 DEFAULT
+            primary: {
+              //... 50 to 900
+              foreground: '#FFFFFF',
+              DEFAULT: '#006FEE',
+            },
+          },
+        },
+      },
+    }),
+  ],
 };
 export default config;

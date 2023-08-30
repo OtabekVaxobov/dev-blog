@@ -25,11 +25,11 @@ export default function SignIn() {
   const auth = getAuth();
   let router = useRouter();
 
-  // useEffect(() => {
-  //     if (currentUser) {
-  //         router.push('/cabinet');
-  //     }
-  // }, [])
+
+  if (currentUser) {
+    router.push('/cabinet');
+  }
+
 
   async function submitHandler() {
     if (!email || !password) {
@@ -48,7 +48,12 @@ export default function SignIn() {
   }
 
   function signInWithGoogle() {
-    signInWithRedirect(auth, provider);
+    signInWithRedirect(auth, provider)
+
+      .then(() => {
+        router.push('/cabinet');
+      })
+      .catch((error => console.log(error)))
   }
 
   return (

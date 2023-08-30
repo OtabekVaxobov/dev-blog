@@ -5,6 +5,8 @@ import { Inter } from 'next/font/google';
 import AuthProvider from '../providers/AuthContext';
 import Header from '@/sections/Header';
 import { ThemeProvider } from 'next-themes';
+import { NextUIProvider } from '@nextui-org/react';
+import Footer from '@/sections/Footer';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
@@ -22,14 +24,17 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={inter.className}>
+      <body className='flex flex-col h-screen justify-between'>
         <ThemeProvider>
-          <AuthProvider>
-            <main data-theme="" className="text-foreground bg-background">
-              <Header />
-              {children}
-            </main>
-          </AuthProvider>
+          <NextUIProvider>
+            <AuthProvider>
+              <main data-theme="" className="text-foreground bg-background ">
+                <Header />
+                {children}
+                <Footer />
+              </main>
+            </AuthProvider>
+          </NextUIProvider>
         </ThemeProvider>
       </body>
     </html>
