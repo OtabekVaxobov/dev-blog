@@ -8,10 +8,9 @@ import {
   getAuth,
 } from 'firebase/auth';
 import { auth, provider } from '../../lib/firebase-config';
-import { Suspense, useEffect, useState } from 'react';
+import { Suspense, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useAuth } from '@/providers/AuthContext';
-import Link from 'next/link';
 import Loading from '@/components/loading';
 
 export default function SignIn() {
@@ -37,11 +36,14 @@ export default function SignIn() {
       return;
     }
     if (isLoggingIn) {
-      try {
-        await login(email, password);
-      } catch (err) {
+
+      await login(email, password).catch((err: string) => {
         setError('Incorrect email or password');
-      }
+        console.log(err);
+      }).finally(
+        router.push('/cabinet')
+      );
+
       return;
     }
     await signup(email, password);

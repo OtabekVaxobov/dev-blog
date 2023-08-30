@@ -1,6 +1,7 @@
 'use client';
 import { ThemeSwitcher } from '@/components/themeSwitcher';
 import {
+  Avatar,
   Button,
   Divider,
   Navbar,
@@ -10,19 +11,19 @@ import {
   NavbarMenu,
   NavbarMenuItem,
   NavbarMenuToggle,
+  Tooltip,
 } from '@nextui-org/react';
 import { getAuth } from 'firebase/auth';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import Image from 'next/image'
+import { useAuth } from '@/providers/AuthContext';
 
 export default function Header() {
   const auth = getAuth();
   const user = auth.currentUser;
-  const photoURL = user?.photoURL;
-  const userName = user?.displayName;
-
-
+  const photoURL = user?.photoURL as string;
+  const { currentUser } = useAuth();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const menuItems = [
     'Profile',
@@ -69,27 +70,33 @@ export default function Header() {
             <Link href="#">Login</Link>
           </NavbarItem>
           <NavbarItem>
-            <Button as={Link} color="primary" href="#" variant="flat">
+            {!currentUser && <Button as={Link} color="primary" href="#" variant="flat">
               Sign Up
-            </Button>
+            </Button>}
           </NavbarItem>
-          <NavbarItem>
+          {currentUser && <NavbarItem>
 
-            <Image
-              width={40}
-              height={40}
+            <Avatar
+              showFallback
               src={
-                photoURL || 'https://images.unsplash.com/photo-1543269664-7eef42226a21?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80'
-              }
+                photoURL}
               alt="profil"
               className="h-8 w-8 rounded-full object-cover border-blue-500  border-1"
             // onClick={() => setOpenModal(true)}
             />
 
-          </NavbarItem>
-          <NavbarItem>
-            <ThemeSwitcher />
-          </NavbarItem>
+          </NavbarItem>}
+          <Tooltip delay={1000} content={
+            <div className="px-1 py-2">
+              <div className="text-small font-bold">Choose Theme</div>
+            </div>
+          }>
+            <NavbarItem>
+
+              <ThemeSwitcher />
+
+            </NavbarItem>
+          </Tooltip>
         </NavbarContent>
         <NavbarMenu>
           {menuItems.map((item, index) => (
