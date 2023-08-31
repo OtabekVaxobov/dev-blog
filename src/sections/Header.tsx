@@ -4,6 +4,10 @@ import {
   Avatar,
   Button,
   Divider,
+  Dropdown,
+  DropdownItem,
+  DropdownMenu,
+  DropdownTrigger,
   Navbar,
   NavbarBrand,
   NavbarContent,
@@ -15,14 +19,17 @@ import {
 } from '@nextui-org/react';
 import { getAuth } from 'firebase/auth';
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
-import Image from 'next/image'
+import { useState } from 'react';
+
 import { useAuth } from '@/providers/AuthContext';
+import { Logout } from '@/components/logout';
+import Ava from '@/components/userAvatar';
+
+
+
+
 
 export default function Header() {
-  const auth = getAuth();
-  const user = auth.currentUser;
-  const photoURL = user?.photoURL as string;
   const { currentUser } = useAuth();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const menuItems = [
@@ -50,18 +57,18 @@ export default function Header() {
 
         <NavbarContent className="md:hidden  gap-4" justify="center">
           <NavbarItem>
-            <Link color="foreground" href="#">
+            <Link color="foreground" href="#" aria-current="page">
               Features
             </Link>
           </NavbarItem>
-          <NavbarItem isActive>
-            <Link href="/cabinet" aria-current="page">
+          {currentUser && <NavbarItem isActive>
+            <Link color="foreground" href="/cabinet" aria-current="page">
               Cabinet
             </Link>
-          </NavbarItem>
-          <NavbarItem>
-            <Link color="foreground" href="/login">
-              Signin
+          </NavbarItem>}
+          <NavbarItem isActive>
+            <Link color="foreground" href="/blogs" aria-current="page">
+              Blogs
             </Link>
           </NavbarItem>
         </NavbarContent>
@@ -70,20 +77,14 @@ export default function Header() {
             <Link href="#">Login</Link>
           </NavbarItem>
           <NavbarItem>
-            {!currentUser && <Button as={Link} color="primary" href="#" variant="flat">
+            {!currentUser && <Button as={Link} color="primary" href="/login" variant="flat">
               Sign Up
             </Button>}
           </NavbarItem>
           {currentUser && <NavbarItem>
 
-            <Avatar
-              showFallback
-              src={
-                photoURL}
-              alt="profil"
-              className="h-8 w-8 rounded-full object-cover border-blue-500  border-1"
-            // onClick={() => setOpenModal(true)}
-            />
+
+            <Ava />
 
           </NavbarItem>}
           <Tooltip delay={1000} content={
@@ -102,7 +103,6 @@ export default function Header() {
           {menuItems.map((item, index) => (
             <NavbarMenuItem key={`${item}-${index}`}>
               <Link
-
                 className="w-full"
                 href="#"
               >

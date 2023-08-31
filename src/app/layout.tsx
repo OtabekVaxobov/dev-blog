@@ -7,6 +7,8 @@ import Header from '@/sections/Header';
 import { ThemeProvider } from 'next-themes';
 import { NextUIProvider } from '@nextui-org/react';
 import Footer from '@/sections/Footer';
+import { Suspense } from 'react';
+import Loading from '@/components/loading';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
@@ -29,9 +31,13 @@ export default function RootLayout({
           <NextUIProvider>
             <AuthProvider>
               <main data-theme="" className="text-foreground bg-background ">
-                <Header />
+                <Suspense fallback={<Loading />}>
+                  <Header />
+                </Suspense>
                 {children}
-                <Footer />
+                <Suspense fallback={<Loading />}>
+                  <Footer />
+                </Suspense>
               </main>
             </AuthProvider>
           </NextUIProvider>

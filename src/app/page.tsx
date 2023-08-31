@@ -9,8 +9,6 @@ export default function Home() {
       <Suspense fallback={<Loading />} >
         <div className="p-24">
           <p>some content</p>
-
-
         </div>
       </Suspense>
     </>

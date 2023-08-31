@@ -1,10 +1,7 @@
 'use client';
 
 import {
-  getRedirectResult,
   signInWithRedirect,
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
   getAuth,
 } from 'firebase/auth';
 import { auth, provider } from '../../lib/firebase-config';
@@ -72,13 +69,13 @@ export default function SignIn() {
           )}
           <input
             type="text"
-            value={email || ''}
+            value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder="Email Address"
             className="outline-none duration-300 border-b-2 border-solid border-white focus:border-cyan-300 text-slate-900 p-2 w-full max-w-[40ch]"
           />
           <input
-            value={password || ''}
+            value={password}
             onChange={(e) => setPassword(e.target.value)}
             type="password"
             placeholder="Password"
@@ -104,7 +101,7 @@ export default function SignIn() {
             </button>
           </div>
           <h2
-            className=" hover:scale-110 cursor-pointer"
+            className="hover:scale-110 cursor-pointer"
             onClick={() => setIsLoggingIn(!isLoggingIn)}
           >
             {!isLoggingIn ? 'Login' : 'Register'}
