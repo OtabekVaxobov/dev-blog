@@ -1,10 +1,12 @@
+'use client'
+
 import { useAuth } from '@/providers/AuthContext';
 import { useRouter } from 'next/navigation';
 
 export function Logout() {
     let router = useRouter();
     const user = useAuth();
-    const logout = () => {
+    const exit = () => {
 
         user
             .logout()
@@ -16,6 +18,6 @@ export function Logout() {
             });
     }
     return (<>
-        <button onClick={logout}>Logout</button>
+        <button onClick={exit}>Logout</button>
     </>)
 };

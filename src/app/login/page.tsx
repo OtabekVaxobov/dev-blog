@@ -26,7 +26,6 @@ export default function SignIn() {
     router.push('/cabinet');
   }
 
-
   async function submitHandler() {
     if (!email || !password) {
       setError('Please enter email and password');
@@ -34,12 +33,11 @@ export default function SignIn() {
     }
     if (isLoggingIn) {
 
-      await login(email, password).catch((err: string) => {
-        setError('Incorrect email or password');
-        console.log(err);
-      }).finally(
-        router.push('/cabinet')
-      );
+      await login(email, password)
+        .catch(() => {
+          setError('Incorrect email or password');
+          return
+        });
 
       return;
     }
