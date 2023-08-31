@@ -8,7 +8,7 @@ import { Suspense } from 'react';
 
 export default function Cabinet() {
   const user1 = getAuth();
-  console.log(user1.currentUser);
+  // console.log(user1.currentUser);
 
   return (
     <>
