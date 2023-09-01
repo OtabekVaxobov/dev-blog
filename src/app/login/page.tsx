@@ -1,14 +1,11 @@
 'use client';
 
-import {
-  signInWithRedirect,
-  getAuth,
-} from 'firebase/auth';
+import { signInWithRedirect, getAuth } from 'firebase/auth';
 import { auth, provider } from '../../lib/firebase-config';
 import { Suspense, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { useAuth } from '@/providers/AuthContext';
-import Loading from '@/components/loading';
+import Loading from '../../components/loading';
+import { useAuth } from '../../providers/AuthContext';
 
 export default function SignIn() {
   const [email, setEmail] = useState('');
@@ -21,7 +18,6 @@ export default function SignIn() {
   const auth = getAuth();
   let router = useRouter();
 
-
   if (currentUser) {
     router.push('/cabinet');
   }
@@ -32,12 +28,10 @@ export default function SignIn() {
       return;
     }
     if (isLoggingIn) {
-
-      await login(email, password)
-        .catch(() => {
-          setError('Incorrect email or password');
-          return
-        });
+      await login(email, password).catch(() => {
+        setError('Incorrect email or password');
+        return;
+      });
 
       return;
     }
@@ -46,11 +40,10 @@ export default function SignIn() {
 
   function signInWithGoogle() {
     signInWithRedirect(auth, provider)
-
       .then(() => {
         router.push('/cabinet');
       })
-      .catch((error => console.log(error)))
+      .catch((error) => console.log(error));
   }
 
   return (

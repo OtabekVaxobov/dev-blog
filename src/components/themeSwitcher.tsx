@@ -22,10 +22,10 @@ export function ThemeSwitcher() {
   return (
     <>
       <Dropdown suppressHydrationWarning>
-        <DropdownTrigger className='cursor-pointer'>Themes</DropdownTrigger>
+        <DropdownTrigger className="cursor-pointer">Themes</DropdownTrigger>
         <DropdownMenu
           aria-label="Action event example"
-          onAction={(key) => setTheme(key.toString())}
+          onAction={(key: string) => setTheme(key.toString())}
         >
           <DropdownItem key="purpledark">PurpleDark</DropdownItem>
           <DropdownItem key="cyberpunk">Cyberpunk</DropdownItem>
@@ -33,7 +33,6 @@ export function ThemeSwitcher() {
           <DropdownItem key="light">Light</DropdownItem>
         </DropdownMenu>
       </Dropdown>
-
     </>
   );
 }

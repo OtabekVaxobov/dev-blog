@@ -1,15 +1,9 @@
 'use client';
-import { ThemeSwitcher } from '@/components/themeSwitcher';
+
 import {
-  Avatar,
   Button,
   Divider,
-  Dropdown,
-  DropdownItem,
-  DropdownMenu,
-  DropdownTrigger,
   Navbar,
-  NavbarBrand,
   NavbarContent,
   NavbarItem,
   NavbarMenu,
@@ -17,17 +11,11 @@ import {
   NavbarMenuToggle,
   Tooltip,
 } from '@nextui-org/react';
-import { getAuth } from 'firebase/auth';
 import Link from 'next/link';
 import { useState } from 'react';
-
-import { useAuth } from '@/providers/AuthContext';
-import { Logout } from '@/components/logout';
-import Ava from '@/components/userAvatar';
-
-
-
-
+import { ThemeSwitcher } from '../components/themeSwitcher';
+import Ava from '../components/userAvatar';
+import { useAuth } from '../providers/AuthContext';
 
 export default function Header() {
   const { currentUser } = useAuth();
@@ -49,10 +37,9 @@ export default function Header() {
       <Navbar onMenuOpenChange={setIsMenuOpen}>
         <NavbarContent>
           <NavbarMenuToggle
-            aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+            aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
             className="md:hidden"
           />
-
         </NavbarContent>
 
         <NavbarContent className="md:hidden  gap-4" justify="center">
@@ -61,11 +48,13 @@ export default function Header() {
               Features
             </Link>
           </NavbarItem>
-          {currentUser && <NavbarItem isActive>
-            <Link color="foreground" href="/cabinet" aria-current="page">
-              Cabinet
-            </Link>
-          </NavbarItem>}
+          {currentUser && (
+            <NavbarItem isActive>
+              <Link color="foreground" href="/cabinet" aria-current="page">
+                Cabinet
+              </Link>
+            </NavbarItem>
+          )}
           <NavbarItem isActive>
             <Link color="foreground" href="/blogs" aria-current="page">
               Blogs
@@ -77,35 +66,34 @@ export default function Header() {
             <Link href="#">Login</Link>
           </NavbarItem>
           <NavbarItem>
-            {!currentUser && <Button as={Link} color="primary" href="/login" variant="flat">
-              Sign Up
-            </Button>}
+            {!currentUser && (
+              <Button as={Link} color="primary" href="/login" variant="flat">
+                Sign Up
+              </Button>
+            )}
           </NavbarItem>
-          {currentUser && <NavbarItem>
-
-
-            <Ava />
-
-          </NavbarItem>}
-          <Tooltip delay={1000} content={
-            <div className="px-1 py-2">
-              <div className="text-small font-bold">Choose Theme</div>
-            </div>
-          }>
+          {currentUser && (
             <NavbarItem>
-
+              <Ava />
+            </NavbarItem>
+          )}
+          <Tooltip
+            delay={1000}
+            content={
+              <div className="px-1 py-2">
+                <div className="text-small font-bold">Choose Theme</div>
+              </div>
+            }
+          >
+            <NavbarItem>
               <ThemeSwitcher />
-
             </NavbarItem>
           </Tooltip>
         </NavbarContent>
         <NavbarMenu>
           {menuItems.map((item, index) => (
             <NavbarMenuItem key={`${item}-${index}`}>
-              <Link
-                className="w-full"
-                href="#"
-              >
+              <Link className="w-full" href="#">
                 {item}
               </Link>
             </NavbarMenuItem>
