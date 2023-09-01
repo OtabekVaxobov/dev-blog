@@ -19,7 +19,7 @@ export default function Cabinet() {
       router.push('/');
     }
     return;
-  }, []);
+  }, [currentUser, router]);
 
   return (
     <>

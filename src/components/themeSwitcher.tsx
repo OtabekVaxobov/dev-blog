@@ -25,7 +25,7 @@ export function ThemeSwitcher() {
         <DropdownTrigger className="cursor-pointer">Themes</DropdownTrigger>
         <DropdownMenu
           aria-label="Action event example"
-          onAction={(key: string) => setTheme(key.toString())}
+          onAction={(key) => setTheme(key.toString())}
         >
           <DropdownItem key="purpledark">PurpleDark</DropdownItem>
           <DropdownItem key="cyberpunk">Cyberpunk</DropdownItem>
