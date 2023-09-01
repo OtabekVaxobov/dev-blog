@@ -67,7 +67,7 @@ export default function Header() {
           </NavbarItem>
           <NavbarItem>
             {!currentUser && (
-              <Button as={Link} color="primary" href="/login" variant="flat">
+              <Button as={Link} href="/login" variant="flat">
                 Sign Up
               </Button>
             )}
