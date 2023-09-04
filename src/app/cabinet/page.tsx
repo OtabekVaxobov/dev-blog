@@ -12,6 +12,7 @@ export default function Cabinet() {
   const { currentUser } = useAuth();
   // console.log(process.env.NEXT_PUBLIC_MEASURMENT_ID?.toString())
   console.log(currentUser);
+  console.log('chack env', process.env.NEXT_PUBLIC_API_KEY)
   let router = useRouter();
 
   useEffect(() => {

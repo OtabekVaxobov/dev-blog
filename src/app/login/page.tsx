@@ -1,7 +1,7 @@
 'use client';
 
 import { signInWithRedirect, getAuth } from 'firebase/auth';
-import { auth, provider } from '../../lib/firebase-config';
+import { auth, provider } from '../../lib/firebase-config2';
 import { Suspense, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Loading from '../../components/loading';
@@ -41,9 +41,9 @@ export default function SignIn() {
   function signInWithGoogle() {
     signInWithRedirect(auth, provider)
       .then(() => {
-        router.push('/cabinet');
+        router.push('/cabinet', { scroll: false });
       })
-      .catch((error) => console.log(error));
+      .catch((error: any) => console.log(error));
   }
 
   return (

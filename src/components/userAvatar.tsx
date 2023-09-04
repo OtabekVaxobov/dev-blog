@@ -20,8 +20,10 @@ export default function Ava(): ReactElement {
     <>
       <div>
         <Dropdown suppressHydrationWarning placement="bottom-start">
-          <DropdownTrigger>
+          <DropdownTrigger >
             <Avatar
+
+              aria-label=''
               showFallback
               src={photoURL}
               alt="profil"

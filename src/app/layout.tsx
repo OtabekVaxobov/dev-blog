@@ -1,17 +1,14 @@
-'use client';
-import './globals.css';
-import { Inter } from 'next/font/google';
-import AuthProvider from '../providers/AuthContext';
+"use client"
 
+import './globals.css';
+import AuthProvider from '../providers/AuthContext';
 import { ThemeProvider } from 'next-themes';
 import { NextUIProvider } from '@nextui-org/react';
-
 import { Suspense } from 'react';
 import Loading from '../components/loading';
 import Footer from '../sections/Footer';
 import Header from '../sections/Header';
 
-const inter = Inter({ subsets: ['latin'] });
 
 export default function RootLayout({
   children,
