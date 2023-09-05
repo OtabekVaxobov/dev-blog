@@ -10,6 +10,7 @@ import {
 import { getAuth } from 'firebase/auth';
 import { Logout } from './logout';
 import { ReactElement } from 'react';
+import Link from 'next/link';
 
 export default function Ava(): ReactElement {
   const auth = getAuth();
@@ -36,7 +37,7 @@ export default function Ava(): ReactElement {
               <p className="font-bold">{userName || 'Name is defined'}</p>
             </DropdownItem>
             <DropdownItem description="Create a new file" key="settings">
-              My Settings
+              <Link href='/cabinet/settings'>Settings</Link>
             </DropdownItem>
             <DropdownItem key="team_settings">Team Settings</DropdownItem>
             <DropdownItem key="analytics">Analytics</DropdownItem>
