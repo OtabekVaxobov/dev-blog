@@ -22,13 +22,13 @@ export default function RootLayout({
           <NextUIProvider>
             <AuthProvider>
               <main data-theme="" className="text-foreground bg-background ">
-                <Suspense fallback={<Loading />}>
-                  <Header />
-                </Suspense>
+
+                <Header />
+
                 {children}
-                <Suspense fallback={<Loading />}>
-                  <Footer />
-                </Suspense>
+
+                <Footer />
+
               </main>
             </AuthProvider>
           </NextUIProvider>

@@ -7,7 +7,7 @@ import {
   DropdownTrigger,
   DropdownMenu,
   DropdownItem,
-} from '@nextui-org/react';
+} from '@nextui-org/dropdown';
 
 export function ThemeSwitcher() {
   const [mounted, setMounted] = useState(false);
@@ -21,16 +21,16 @@ export function ThemeSwitcher() {
 
   return (
     <>
-      <Dropdown suppressHydrationWarning>
+      <Dropdown>
         <DropdownTrigger className="cursor-pointer">Themes</DropdownTrigger>
         <DropdownMenu
-          aria-label="Action event example"
+          aria-label="Action"
           onAction={(key) => setTheme(key.toString())}
         >
-          <DropdownItem key="purpledark">PurpleDark</DropdownItem>
-          <DropdownItem key="cyberpunk">Cyberpunk</DropdownItem>
-          <DropdownItem key="dark">Dark</DropdownItem>
-          <DropdownItem key="light">Light</DropdownItem>
+          <DropdownItem aria-label="PurpleDark" key="purpledark">PurpleDark</DropdownItem>
+          <DropdownItem aria-label="Cyberpunk" key="cyberpunk">Cyberpunk</DropdownItem>
+          <DropdownItem aria-label="Dark" key="dark">Dark</DropdownItem>
+          <DropdownItem aria-label="Light" key="light">Light</DropdownItem>
         </DropdownMenu>
       </Dropdown>
     </>

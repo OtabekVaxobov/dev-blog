@@ -1056,7 +1056,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@nextui-org/dropdown@npm:2.1.7":
+"@nextui-org/dropdown@npm:2.1.7, @nextui-org/dropdown@npm:^2.1.7":
   version: 2.1.7
   resolution: "@nextui-org/dropdown@npm:2.1.7"
   dependencies:
@@ -2181,17 +2181,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@react-aria/interactions@npm:^3.16.0, @react-aria/interactions@npm:^3.17.0":
-  version: 3.17.0
-  resolution: "@react-aria/interactions@npm:3.17.0"
+"@react-aria/interactions@npm:3.0.0-nightly.2390":
+  version: 3.0.0-nightly.2390
+  resolution: "@react-aria/interactions@npm:3.0.0-nightly.2390"
   dependencies:
-    "@react-aria/ssr": ^3.7.1
-    "@react-aria/utils": ^3.19.0
-    "@react-types/shared": ^3.19.0
+    "@react-aria/ssr": 3.7.2-nightly.4096+e02d20562
+    "@react-aria/utils": 3.0.0-nightly.2390+e02d20562
+    "@react-types/shared": 3.0.0-nightly.2390+e02d20562
     "@swc/helpers": ^0.5.0
   peerDependencies:
     react: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0
-  checksum: f83109ded62b3a46a9c0c9ca22bafafef57e755444108ba16ce3fe808ae007f924d9f2287ec5e1f30bfdb502ce28946a3d6babed59ac9fb5893b0c7deec7f4d4
+  checksum: 2bbef0d5f63867b5f3a225ce78b5d8d9fd695d2dfeee576adb3ee15e44a84e55e954d528b2ad727e9247a6169e63109030bfc0b78a8525bdb4437147c91b8293
   languageName: node
   linkType: hard
 
@@ -2353,6 +2353,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@react-aria/ssr@npm:3.7.2-nightly.4096+e02d20562":
+  version: 3.7.2-nightly.4096
+  resolution: "@react-aria/ssr@npm:3.7.2-nightly.4096"
+  dependencies:
+    "@swc/helpers": ^0.5.0
+  peerDependencies:
+    react: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0
+  checksum: b2f7a279baa870147c133dc39cd1a19e0bdcbacbafc851a2e7fac6ba29046008a9228e2d3e3a17d0a2b39a275c4f3338d1f6843693dc6965ce24dcba2bcb4b73
+  languageName: node
+  linkType: hard
+
 "@react-aria/ssr@npm:^3.7.1":
   version: 3.7.1
   resolution: "@react-aria/ssr@npm:3.7.1"
@@ -2474,6 +2485,21 @@ __metadata:
   peerDependencies:
     react: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0
   checksum: e1883e09995d50c2c17ddbdc6878553771293949def52cbf6e7fb928daf928c84158c2eff74680e65b90b79739fd5596e41c2f0693b1753dd762e9eb03949048
+  languageName: node
+  linkType: hard
+
+"@react-aria/utils@npm:3.0.0-nightly.2390+e02d20562":
+  version: 3.0.0-nightly.2390
+  resolution: "@react-aria/utils@npm:3.0.0-nightly.2390"
+  dependencies:
+    "@react-aria/ssr": 3.7.2-nightly.4096+e02d20562
+    "@react-stately/utils": 3.0.0-nightly.2390+e02d20562
+    "@react-types/shared": 3.0.0-nightly.2390+e02d20562
+    "@swc/helpers": ^0.5.0
+    clsx: ^1.1.1
+  peerDependencies:
+    react: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0
+  checksum: 2083f22697d9d480104d16c8ddcfbd49ab85145d6f172b3a75881737a01e36fb9cddd0af3c377834c39182a5ae6f2285a4ebc47b151c65342b74ec2d6d25988e
   languageName: node
   linkType: hard
 
@@ -2706,6 +2732,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@react-stately/utils@npm:3.0.0-nightly.2390+e02d20562":
+  version: 3.0.0-nightly.2390
+  resolution: "@react-stately/utils@npm:3.0.0-nightly.2390"
+  dependencies:
+    "@swc/helpers": ^0.5.0
+  peerDependencies:
+    react: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0
+  checksum: 8b2f3c85a8cc6a4cbc7f6422a1a3d8559f2789da6ae20359498d06f933981e47748dc69354c40768aeb82c6628070d854636237a4d6df390d28a4547e1b01fce
+  languageName: node
+  linkType: hard
+
 "@react-stately/utils@npm:^3.7.0":
   version: 3.7.0
   resolution: "@react-stately/utils@npm:3.7.0"
@@ -2873,6 +2910,15 @@ __metadata:
   peerDependencies:
     react: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0
   checksum: f53e4f1f66d81b1d396215847f0e1e0974c533e3b34af1dbbba1cb83c724170e36688179f77401a92ebfc0fbc8395e1f66d90a083cc3b4e5d8304554a81c81fd
+  languageName: node
+  linkType: hard
+
+"@react-types/shared@npm:3.0.0-nightly.2390+e02d20562":
+  version: 3.0.0-nightly.2390
+  resolution: "@react-types/shared@npm:3.0.0-nightly.2390"
+  peerDependencies:
+    react: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0
+  checksum: 53e2b920ccb4c036e9feacd20ba620691c58392bae5d4517eafbc422ebb60ce850385dc4c8ab80f1ae3788752fe61da570ae7b59f521caa51fe7ba2601ce47f1
   languageName: node
   linkType: hard
 
@@ -3905,7 +3951,9 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "dev-blog@workspace:."
   dependencies:
+    "@nextui-org/dropdown": ^2.1.7
     "@nextui-org/react": ^2.1.10
+    "@react-aria/visually-hidden": ^3.8.3
     "@types/node": 20.5.6
     "@types/react": ^18.2.21
     autoprefixer: ^10.4.15

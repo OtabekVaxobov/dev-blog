@@ -9,6 +9,9 @@
     "start": "next start",
     "lint": "next lint"
   },
+  "resolutions": {
+    "@react-aria/interactions": "3.0.0-nightly.2390"
+  },
   "dependencies": {
     "autoprefixer": "^10.4.15",
     "firebase": "^10.3.0",
@@ -19,7 +22,9 @@
     "tailwindcss": "^3.3.3"
   },
   "devDependencies": {
+    "@nextui-org/dropdown": "^2.1.7",
     "@nextui-org/react": "^2.1.10",
+    "@react-aria/visually-hidden": "^3.8.3",
     "@types/node": "20.5.6",
     "@types/react": "^18.2.21",
     "encoding": "^0.1.13",

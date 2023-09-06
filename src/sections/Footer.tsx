@@ -4,7 +4,7 @@ import Link from "next/link";
 export default function Footer() {
   const dt = new Date();
   return <>
-    <footer className="sticky top-[100vh]">
+    <footer className="w-full flex items-center justify-center py-3">
       <div className="container px-6 py-8 mx-auto">
         <div className="flex flex-col items-center text-center">
 
