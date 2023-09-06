@@ -6,6 +6,7 @@ import { Suspense, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Loading from '../../components/loading';
 import { useAuth } from '../../providers/AuthContext';
+import { Button } from '@nextui-org/react';
 
 export default function SignIn() {
   const [email, setEmail] = useState('');
@@ -40,10 +41,10 @@ export default function SignIn() {
 
   function signInWithGoogle() {
     signInWithRedirect(auth, provider)
-      .then(() => {
-        router.push('/cabinet', { scroll: false });
-      })
-      .catch((error: any) => console.log(error));
+    // .then(() => {
+    //   router.push('/cabinet', { scroll: false });
+    // })
+    // .catch((error: string) => console.log(error));
   }
 
   return (
@@ -72,16 +73,15 @@ export default function SignIn() {
             placeholder="Password"
             className="outline-none text-slate-900 p-2 w-full max-w-[40ch] duration-300 border-b-2 border-solid border-white focus:border-cyan-300"
           />
-          <button
+          <Button
             onClick={submitHandler}
-            className="w-full max-w-[40ch] border border-white border-solid uppercase py-2 duration-300  after:top-0 after:right-full after:bg-white after:z-10 after:w-full after:h-full overflow-hidden hover:after:translate-x-full after:duration-300 hover:text-cyan-300"
+            className='hover:after:translate-x-full after:duration-300 hover:text-cyan-300'
           >
-            <h2 className="">SUBMIT</h2>
-          </button>
+            SUBMIT
+          </Button>
           <div className="flex items-center mt-6 -mx-2">
-            <button
+            <Button
               onClick={() => signInWithGoogle()}
-              type="button"
               className="flex items-center justify-center w-full px-6 py-2 mx-2 text-sm font-medium text-white transition-colors duration-300 transform bg-blue-500 rounded-lg hover:bg-blue-400 focus:bg-blue-400 focus:outline-none"
             >
               <svg className="w-4 h-4 mx-2 fill-current" viewBox="0 0 24 24">
@@ -89,7 +89,7 @@ export default function SignIn() {
               </svg>
 
               <span className="hidden mx-2 sm:inline">Sign in with Google</span>
-            </button>
+            </Button>
           </div>
           <h2
             className="hover:scale-110 cursor-pointer"
