@@ -17,7 +17,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className="flex flex-col h-screen justify-between">
+      <body className="flex flex-col max-h-screen justify-between">
         <ThemeProvider>
           <NextUIProvider>
             <AuthProvider>

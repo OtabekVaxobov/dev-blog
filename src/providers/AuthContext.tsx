@@ -5,6 +5,8 @@ import {
   createUserWithEmailAndPassword,
   signOut,
   onAuthStateChanged,
+  UserCredential,
+  User,
 } from 'firebase/auth';
 
 type MovieContextType = {
@@ -15,10 +17,10 @@ type MovieContextType = {
 };
 
 const AuthContext = createContext<MovieContextType>({
-  currentUser: undefined,
-  login: undefined,
-  signup: undefined,
-  logout: undefined,
+  currentUser: Promise<User>,
+  login: Promise<UserCredential>,
+  signup: Promise<UserCredential>,
+  logout: Promise<void>,
 });
 
 export function useAuth() {

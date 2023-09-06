@@ -1,20 +1,11 @@
 'use client'
 
-import { useRouter } from 'next/navigation';
-import { useEffect } from "react";
-import { useAuth } from "../../../providers/AuthContext";
-
+import RouteGuard from "../../../components/guard";
 export default function SettingsPage() {
-    let router = useRouter();
-    const { currentUser } = useAuth();
-    useEffect(() => {
-        if (!currentUser) {
-            router.push('/');
-        }
-        return;
-    }, [currentUser, router]);
+    RouteGuard()
     return (
         <>
+
             Profile settings
         </>
     )
