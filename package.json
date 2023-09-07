@@ -13,6 +13,7 @@
     "@react-aria/interactions": "3.0.0-nightly.2390"
   },
   "dependencies": {
+    "@editorjs/editorjs": "^2.28.0",
     "autoprefixer": "^10.4.15",
     "firebase": "^10.3.0",
     "next": "^13.4.19",
