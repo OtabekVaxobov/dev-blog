@@ -4,8 +4,6 @@ import './globals.css';
 import AuthProvider from '../providers/AuthContext';
 import { ThemeProvider } from 'next-themes';
 import { NextUIProvider } from '@nextui-org/react';
-import { Suspense } from 'react';
-import Loading from '../components/loading';
 import Footer from '../sections/Footer';
 import Header from '../sections/Header';
 
@@ -17,6 +15,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <link rel="icon" href="/logo-dev-blog.ico" type="image/png" sizes="32x32" />
+        {/* <link rel="icon" href="/logo-dev-blog.png" type="image/png" sizes="32x32" /> */}
+      </head>
       <body className="flex flex-col max-h-screen justify-between">
         <ThemeProvider>
           <NextUIProvider>
