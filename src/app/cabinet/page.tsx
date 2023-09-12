@@ -12,23 +12,33 @@ import { Button } from '@nextui-org/react';
 import { addDoc, collection } from 'firebase/firestore';
 import EditorJS, { OutputData } from '@editorjs/editorjs';
 import { createReactEditorJS } from "react-editor-js";
-import { EDITOR_JS_TOOLS } from "../../lib/tools";
+import dynamic from 'next/dynamic';
 
+const EditorBlock = dynamic(() => import("../../components/editor"), {
+  ssr: false,
+});
 export default function Cabinet() {
-  const [Title, setTitle] = useState("");
-  const [Subject, setSubject] = useState("");
   const user1 = getAuth();
+  const [data, setData] = useState<OutputData>();
   const handleSubmit = async (e: { preventDefault: () => void; }) => {
     e.preventDefault();
-    if (Subject !== "") {
-      await addDoc(collection(firestore, "blogs"), {
-        Subject,
-        Title,
-        completed: false,
-        authorId: user1.currentUser?.uid,
-        authorName: user1.currentUser?.displayName
-      });
-      setSubject("");
+    if (data !== undefined) {
+      try {
+        await addDoc(collection(firestore, "blogs"), {
+          data,
+          completed: false,
+          authorId: user1.currentUser?.uid,
+          authorName: user1.currentUser?.displayName
+        });
+        setData(undefined)
+      }
+      catch (e) {
+        console.log(e)
+      } finally {
+        alert('success')
+      }
+    } else {
+      console.log('emty')
     }
   }
 
@@ -41,58 +51,20 @@ export default function Cabinet() {
 
   RouteGuard(); // route guard
 
-  //editor
-  const EditorJs = createReactEditorJS();
-  const instanceRef = useRef(null);
-  async function handleSave() {
-    const savedData = await instanceRef.current.save();
 
-    console.log("savedData", savedData);
-    // const edjsParser = EditorHtml();
-    // const html = edjsParser.parse(savedData);
-    // console.log("ini html", html);
-  }
   return (
     <>
-      <Suspense fallback={<Loading />}>
-        <div className="flex justify-center  flex-col max-w-full">
-          <h1>Cabinet</h1>
-          <EditorJs
-            instanceRef={(instance) => (instanceRef.current = instance)}
-            tools={EDITOR_JS_TOOLS}
-            data={{
-              time: 1556098174501,
-              blocks: [
-                {
-                  type: "header",
-                  data: {
-                    text: "Editor.js",
-                    level: 2
-                  }
-                },
-              ]
-            }} />
 
-          <button onClick={handleSave}>Save!</button>
-          {/* <form onSubmit={handleSubmit}>
-            <div className="flex flex-col gap-1">
-              <input type="text"
-                placeholder='what do you want to do?'
-                value={Subject}
-                onChange={(e) => setSubject(e.target.value)}
-              />
-              <input type="text"
-                placeholder='what do you want to do?'
-                value={Title}
-                onChange={(e) => setTitle(e.target.value)}
-              />
-            </div>
-            <div className="btn-container">
-              <button>Add-Todo</button>
-            </div>
-          </form> */}
+      <div className="flex justify-center  flex-col max-w-full">
+        <h1>Cabinet</h1>
+        <div className='border border-cyan-800 mx-16 '>
+          <Suspense fallback={<Loading />}>
+            <EditorBlock data={data} onChange={setData} holder="editorjs-container" />
+          </Suspense>
         </div>
-      </Suspense>
+        <button onClick={handleSubmit}>Save!</button>
+      </div>
+
     </>
   );
 }
