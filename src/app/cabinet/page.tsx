@@ -1,26 +1,28 @@
 'use client';
 
 import { getAuth } from 'firebase/auth';
-import { useRouter } from 'next/navigation';
-import { MutableRefObject, RefObject, Suspense, useRef, useState } from 'react';
+import { useState } from 'react';
 import Loading from '../../components/loading';
-import { useAuth } from '../../providers/AuthContext';
 import RouteGuard from '../../components/guard';
-import { child, get, getDatabase, ref, set } from "firebase/database";
 import { database, firestore, storage } from "../../lib/firebase-config2"
-import { Button } from '@nextui-org/react';
 import { addDoc, collection } from 'firebase/firestore';
-import EditorJS, { OutputData } from '@editorjs/editorjs';
-import { createReactEditorJS } from "react-editor-js";
+import { OutputData } from '@editorjs/editorjs';
 import dynamic from 'next/dynamic';
+
 
 const EditorBlock = dynamic(() => import("../../components/editor"), {
   ssr: false,
 });
+
+
+
 export default function Cabinet() {
   const user1 = getAuth();
+  const [loading, setLoading] = useState(false);
   const [data, setData] = useState<OutputData>();
+
   const handleSubmit = async (e: { preventDefault: () => void; }) => {
+    setLoading(true)
     e.preventDefault();
     if (data !== undefined) {
       try {
@@ -31,13 +33,16 @@ export default function Cabinet() {
           authorName: user1.currentUser?.displayName
         });
         setData(undefined)
+
       }
       catch (e) {
         console.log(e)
       } finally {
-        alert('success')
+        setLoading(false)
+
       }
     } else {
+      setLoading(false)
       console.log('emty')
     }
   }
@@ -54,17 +59,18 @@ export default function Cabinet() {
 
   return (
     <>
-
       <div className="flex justify-center  flex-col max-w-full">
+        {
+          (loading) ? <Loading /> :
+            <>
+              <div className='border border-cyan-800 mx-16 '>
+                <EditorBlock data={data} onChange={setData} holder="editorjs-container" />
+              </div>
+              <button onClick={handleSubmit}>Save!</button>
+            </>
+        }
         <h1>Cabinet</h1>
-        <div className='border border-cyan-800 mx-16 '>
-          <Suspense fallback={<Loading />}>
-            <EditorBlock data={data} onChange={setData} holder="editorjs-container" />
-          </Suspense>
-        </div>
-        <button onClick={handleSubmit}>Save!</button>
       </div>
-
     </>
   );
 }
