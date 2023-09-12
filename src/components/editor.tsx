@@ -1,9 +1,9 @@
 //./components/Editor
-import React, { memo, useEffect, useRef, useState } from "react";
+import React, { memo, useEffect, useRef } from "react";
 import EditorJS, { OutputData } from "@editorjs/editorjs";
 
 import Embed from '@editorjs/embed'
-import Table from '@editorjs/table'
+// import Table from '@editorjs/table'
 import List from '@editorjs/list'
 import Warning from '@editorjs/warning'
 import Code from '@editorjs/code'
@@ -16,12 +16,12 @@ import Marker from '@editorjs/marker'
 import CheckList from '@editorjs/checklist'
 import Delimiter from '@editorjs/delimiter'
 import InlineCode from '@editorjs/inline-code'
-import SimpleImage from '@editorjs/simple-image'
+// import SimpleImage from '@editorjs/simple-image'
 import { ToolSettings } from '@editorjs/editorjs'
 
 const EDITOR_TOOLS = {
     embed: Embed as ToolSettings,
-    table: Table as ToolSettings,
+    // table: Table as ToolSettings,
     marker: Marker as ToolSettings,
     list: List as ToolSettings,
     warning: Warning as ToolSettings,
@@ -34,7 +34,7 @@ const EDITOR_TOOLS = {
     checklist: CheckList as ToolSettings,
     delimiter: Delimiter as ToolSettings,
     inlineCode: InlineCode as ToolSettings,
-    simpleImage: SimpleImage as ToolSettings,
+    // simpleImage: SimpleImage,
 }
 
 //props
