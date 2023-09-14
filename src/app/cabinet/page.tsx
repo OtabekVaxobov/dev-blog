@@ -12,6 +12,7 @@ import dynamic from 'next/dynamic';
 
 const EditorBlock = dynamic(() => import("../../components/editor"), {
   ssr: false,
+  loading: () => <div>Loading...</div>,
 });
 
 

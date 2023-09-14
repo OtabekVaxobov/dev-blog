@@ -44,19 +44,19 @@ export default function Header() {
 
         <NavbarContent className="md:hidden  gap-4" justify="center">
           <NavbarItem>
-            <Link color="foreground" href="#" aria-current="page">
+            <Link className='hover:text-blue-500 dark:hover:text-blue-400' color="foreground" href="#" aria-current="page">
               Features
             </Link>
           </NavbarItem>
           {currentUser && (
             <NavbarItem isActive>
-              <Link color="foreground" href="/cabinet" aria-current="page">
+              <Link className='hover:text-blue-500 dark:hover:text-blue-400' color="foreground" href="/cabinet" aria-current="page">
                 Cabinet
               </Link>
             </NavbarItem>
           )}
           <NavbarItem isActive>
-            <Link color="foreground" href="/blogs" aria-current="page">
+            <Link className='hover:text-blue-500 dark:hover:text-blue-400' color="foreground" href="/blogs" aria-current="page">
               Blogs
             </Link>
           </NavbarItem>

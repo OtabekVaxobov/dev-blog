@@ -2,7 +2,6 @@
 
 import {
   Avatar,
-  Link,
 } from '@nextui-org/react';
 import {
   Dropdown,
@@ -13,8 +12,7 @@ import {
 } from '@nextui-org/dropdown';
 import { getAuth } from 'firebase/auth';
 import { Logout } from './logout';
-import { ReactElement } from 'react';
-// import Link from 'next/link';
+import Link from 'next/link';
 
 export default function Ava() {
   const auth = getAuth();
@@ -35,11 +33,11 @@ export default function Ava() {
             />
           </DropdownTrigger>
           <DropdownMenu aria-label="User Actions" variant="flat">
-            <DropdownItem key="profile" className="h-14 gap-2">
+            <DropdownItem aria-label='Signed in as' key="profile" className="h-14 gap-2">
               <p aria-label="signed" className="font-bold">Signed in as</p>
-              <p aria-label="userName" className="font-bold">{userName || 'Name is defined'}</p>
+              <p aria-label="userName" className="font-bold">{userName || 'anonimus'}</p>
             </DropdownItem>
-            <DropdownItem description="Settings" key="settings">
+            <DropdownItem aria-label='Settings' key="settings" color='primary'>
               <Link href='/cabinet/settings'>Settings</Link>
             </DropdownItem>
             <DropdownItem aria-label='team_settings' key="team_settings">Team Settings</DropdownItem>
