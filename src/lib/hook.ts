@@ -33,5 +33,5 @@ export async function upload(file: Blob | ArrayBuffer, currentUser: { uid: strin
     updateProfile(currentUser, { photoURL });
 
     setLoading(false);
-    alert('Uploaded file!');
+    alert('profile changed! You must reload page!');
 }

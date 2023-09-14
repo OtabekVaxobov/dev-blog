@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, useLayoutEffect } from "react";
 import RouteGuard from "../../../components/guard";
 import {
     getAuth,
@@ -38,35 +38,30 @@ export default function SettingsPage() {
     console.log('current user', currentUser);
 
     function handleChange(e: any) {
+        e.preventDefault();
         if (e.target.files[0]) {
             console.log(e.target.files)
             setPhoto(e.target.files[0]);
         }
     }
 
-    const handleChangeNameInput = (event: any) => {
-        setName(event.target.value);
+    const handleChangeNameInput = (e: any) => {
+        e.preventDefault();
+        setName(e.target.value);
     };
 
     function handleClick() {
         upload(photo, currentUser, setLoading).catch((e) => console.log(e));
-        updateProfile(user, {
-            displayName: name,
-            photoURL: photo,
-
-        })
-            .catch((error) => {
-                console.log(error)
-            });
     }
 
-    useEffect(() => {
-        // @ts-ignore
-        if (currentUser?.photoURL) {
-            // @ts-ignore
-            setPhotoURL(currentUser.photoURL);
-        }
-    }, [photoURL]);
+    useLayoutEffect(() => {
+        updateProfile(currentUser, {
+            displayName: name,
+            photoURL: photo,
+        }).catch((error) => { console.log(error) });
+    }, [photoURL, name]);
+
+
     return (
         <>
             {(loading) ? <Loading /> : <div className="flex items-center flex-col justify-center mx-auto max-w-7xl">
@@ -111,7 +106,7 @@ export default function SettingsPage() {
                 <div className="flex flex-col justify-center items-center max-w-sm">
                     <p>name: {displayName || 'none'}</p>
                     <p>email: {email || 'none'}</p>
-                    <p>photoURL: {photoURL || 'none'}</p>
+                    <p>photoURL: {photoURL1 || 'none'}</p>
                     <p>{emailVerified || 'none'}</p>
                     <p>uid: {uid || 'none'}</p>
                 </div>
