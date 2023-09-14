@@ -11,7 +11,7 @@ import {
 import { upload, useAuth } from "../../../lib/hook";
 
 import Loading from "../../../components/loading";
-import { Avatar, Input } from "@nextui-org/react";
+import { Avatar, Input, User } from "@nextui-org/react";
 import { error } from "console";
 
 export default function SettingsPage() {
@@ -54,12 +54,26 @@ export default function SettingsPage() {
         upload(photo, currentUser, setLoading).catch((e) => console.log(e));
     }
 
-    useLayoutEffect(() => {
-        updateProfile(currentUser, {
-            displayName: name,
-            photoURL: photo,
-        }).catch((error) => { console.log(error) });
-    }, [photoURL, name]);
+    updateProfile(auth.currentUser!, {
+        displayName: name,
+        photoURL: photo,
+    })
+        .then(() => {
+            // Profile updated!
+            // ...
+        })
+        .catch((error) => {
+            console.log(error);
+        });
+
+    useEffect(() => {
+        // @ts-ignore
+        if (currentUser?.photoURL) {
+            // @ts-ignore
+            setPhotoURL(currentUser.photoURL);
+        }
+    }, [currentUser]);
+
 
 
     return (
