@@ -1,4 +1,5 @@
 import {
+    User,
     getAuth,
     onAuthStateChanged,
     updateProfile,
@@ -22,7 +23,7 @@ export function useAuth() {
     return currentUser;
 }
 
-export async function upload(file: Blob | ArrayBuffer, currentUser: { uid: string; } | undefined, setLoading: any) {
+export async function upload(file: Blob | ArrayBuffer, currentUser: User, setLoading: any) {
     const fileRef = ref(storage, 'UserProfilePhotos/' + currentUser?.uid + '.png');
 
     setLoading(true);
@@ -30,7 +31,10 @@ export async function upload(file: Blob | ArrayBuffer, currentUser: { uid: strin
     await uploadBytes(fileRef, file);
     const photoURL = await getDownloadURL(fileRef);
 
-    updateProfile(currentUser, { photoURL });
+    if (currentUser) {
+        updateProfile(currentUser, { photoURL });
+    }
+
 
     setLoading(false);
     alert('profile changed! You must reload page!');

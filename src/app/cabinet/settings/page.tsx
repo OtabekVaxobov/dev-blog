@@ -47,7 +47,7 @@ export default function SettingsPage() {
     };
 
     function handleClick() {
-        upload(photo, currentUser, setLoading).catch((e) => console.log(e));
+        upload(photo, currentUser!, setLoading).catch((e) => console.log(e));
     }
     if (auth.currentUser) {
         updateProfile(auth.currentUser!, {
