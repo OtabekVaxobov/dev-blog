@@ -1,24 +1,20 @@
 'use client'
 
-import { useEffect, useState, useRef, useLayoutEffect } from "react";
+import { useEffect, useState } from "react";
 import RouteGuard from "../../../components/guard";
 import {
     getAuth,
-    sendEmailVerification,
-    updatePhoneNumber,
     updateProfile,
 } from 'firebase/auth';
 import { upload, useAuth } from "../../../lib/hook";
 
 import Loading from "../../../components/loading";
-import { Avatar, Input, User } from "@nextui-org/react";
-import { error } from "console";
+import { Avatar, Input } from "@nextui-org/react";
 
 export default function SettingsPage() {
     RouteGuard()
     const auth = getAuth();
     const user = auth.currentUser;
-    const inputRef = useRef(null);
     const displayName = user?.displayName;
     const email = user?.email;
     const emailVerified = user?.emailVerified;
@@ -53,18 +49,19 @@ export default function SettingsPage() {
     function handleClick() {
         upload(photo, currentUser, setLoading).catch((e) => console.log(e));
     }
-
-    updateProfile(auth.currentUser!, {
-        displayName: name,
-        photoURL: photo,
-    })
-        .then(() => {
-            // Profile updated!
-            // ...
+    if (auth.currentUser) {
+        updateProfile(auth.currentUser!, {
+            displayName: name,
+            photoURL: photo,
         })
-        .catch((error) => {
-            console.log(error);
-        });
+            .then(() => {
+                // Profile updated!
+                // ...
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    }
 
     useEffect(() => {
         // @ts-ignore

@@ -30,7 +30,7 @@ export function useAuth() {
 export default function AuthProvider({
   children,
 }: {
-  children: React.ReactNode | JSX.Element;
+  children: React.ReactNode;
 }) {
   const [currentUser, setCurrentUser] = useState(Object);
   const [loading, setLoading] = useState(true);

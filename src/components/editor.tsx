@@ -40,7 +40,7 @@ const EDITOR_TOOLS = {
 //props
 type Props = {
     data?: OutputData | undefined;
-    onChange(val: OutputData): void;
+    onChange: any
     holder: string;
 
 };
@@ -57,7 +57,7 @@ const EditorBlock = ({ data, onChange, holder }: Props) => {
                 holder: holder,
                 tools: EDITOR_TOOLS,
                 data,
-                async onChange(api, event) {
+                async onChange(api) {
                     const data = await api.saver.save();
                     onChange(data);
                 },
@@ -71,7 +71,7 @@ const EditorBlock = ({ data, onChange, holder }: Props) => {
                 ref.current.destroy();
             }
         };
-    }, []);
+    }, [data, onChange, holder]);
 
 
     return <div id={holder} />

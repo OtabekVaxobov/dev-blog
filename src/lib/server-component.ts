@@ -1,9 +1,9 @@
-'use server'
+// 'use server'
 
-import { loadEnvConfig } from '@next/env'
+// import { loadEnvConfig } from '@next/env'
 
 
-export default async () => {
-    const projectDir = process.cwd()
-    loadEnvConfig(projectDir)
-}
+// export default async () => {
+//     const projectDir = process.cwd()
+//     loadEnvConfig(projectDir)
+// }

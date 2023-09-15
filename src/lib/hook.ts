@@ -5,7 +5,7 @@ import {
 } from 'firebase/auth';
 
 import { getDownloadURL, getStorage, ref, uploadBytes } from 'firebase/storage';
-import { SetStateAction, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const auth = getAuth();
 const storage = getStorage();
@@ -22,12 +22,12 @@ export function useAuth() {
     return currentUser;
 }
 
-export async function upload(file: Blob | ArrayBuffer, currentUser: { uid: string; } | undefined, setLoading: { (value: SetStateAction<boolean>): void; (arg0: boolean): void; }) {
+export async function upload(file: Blob | ArrayBuffer, currentUser: { uid: string; } | undefined, setLoading: any) {
     const fileRef = ref(storage, 'UserProfilePhotos/' + currentUser?.uid + '.png');
 
     setLoading(true);
 
-    const snapshot = await uploadBytes(fileRef, file);
+    await uploadBytes(fileRef, file);
     const photoURL = await getDownloadURL(fileRef);
 
     updateProfile(currentUser, { photoURL });

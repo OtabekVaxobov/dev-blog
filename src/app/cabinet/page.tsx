@@ -4,7 +4,7 @@ import { getAuth } from 'firebase/auth';
 import { useState } from 'react';
 import Loading from '../../components/loading';
 import RouteGuard from '../../components/guard';
-import { database, firestore, storage } from "../../lib/firebase-config2"
+import { firestore } from "../../lib/firebase-config2"
 import { addDoc, collection } from 'firebase/firestore';
 import { OutputData } from '@editorjs/editorjs';
 import dynamic from 'next/dynamic';

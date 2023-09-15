@@ -1,5 +1,6 @@
 "use client"
 
+import React from 'react';
 import './globals.css';
 import AuthProvider from '../providers/AuthContext';
 import { ThemeProvider } from 'next-themes';

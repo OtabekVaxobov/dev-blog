@@ -24,6 +24,7 @@ export function ThemeSwitcher() {
       <Dropdown>
         <DropdownTrigger className="cursor-pointer">Themes</DropdownTrigger>
         <DropdownMenu
+          id={theme}
           aria-label="Action"
           onAction={(key) => setTheme(key.toString())}
         >

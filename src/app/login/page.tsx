@@ -1,7 +1,7 @@
 'use client';
 
 import { signInWithRedirect, getAuth } from 'firebase/auth';
-import { auth, provider } from '../../lib/firebase-config2';
+import { provider } from '../../lib/firebase-config2';
 import { Suspense, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Loading from '../../components/loading';
