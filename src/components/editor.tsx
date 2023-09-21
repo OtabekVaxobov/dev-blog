@@ -39,7 +39,7 @@ const EDITOR_TOOLS = {
 
 //props
 type Props = {
-    data?: OutputData | undefined;
+    data?: OutputData;
     onChange: any
     holder: string;
 
@@ -50,10 +50,12 @@ const EditorBlock = ({ data, onChange, holder }: Props) => {
     const ref = useRef<EditorJS>();
 
     //initialize editorjs
+    /* eslint-disable */
     useEffect(() => {
         //initialize editor if we don't have a reference
         if (!ref.current) {
             const editor = new EditorJS({
+                autofocus: true,
                 holder: holder,
                 tools: EDITOR_TOOLS,
                 data,
@@ -71,7 +73,7 @@ const EditorBlock = ({ data, onChange, holder }: Props) => {
                 ref.current.destroy();
             }
         };
-    }, [data, onChange, holder]);
+    }, [onChange]);
 
 
     return <div id={holder} />
